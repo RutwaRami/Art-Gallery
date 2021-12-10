@@ -1,0 +1,139 @@
+<html>
+
+<head>
+    <tittle>
+
+    </tittle>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+           
+            background-size: cover;
+        }
+        
+        .m,
+        .n,
+        .p {
+            border: none;
+      outline: none;
+      background: none;
+      color: black;
+      font-size: 20px;
+      
+       margin-inline: 1px;
+         font-family: inherit;
+        }
+        
+        .dtn {
+            padding: 15px 25px;
+      font-size: 20px;
+      text-align: center;
+      cursor: pointer;
+      outline: none;
+      color: #fff;
+      background-color:#42424298;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+        }
+        
+        .mtn {
+            width: 150px;
+            margin-left: 550px;
+            font-size: 20px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: black;
+            background-color: #ecbc9c;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            
+        }
+        .back{
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+        .l {
+            text-align: center;
+      font-size: 30px;
+      margin-bottom: 1px;
+      padding: 5px 0;
+      color: rgb(255, 108, 108);
+            
+        }
+    .row{
+      float: left;
+      margin-right: 50px;
+      margin-bottom: 20px;
+      background-color: rgb(230, 230, 230);
+      text-align: center;
+    }
+
+    .box{
+    margin-left: 80px;
+      margin-top: 30px;
+      
+      text-align: center;
+      
+    }
+    .head{
+            background-position: center;
+            background-color: #ecbc9c;
+             background-size: cover;
+                   width: 100%;
+              
+            text-align: center;
+            margin-top: 30px;
+              
+            }
+            .head  h1{
+              color:white;
+              
+              font-size:35px;	
+            }
+    </style>
+</head>
+
+
+<body>
+    <div class="head">
+
+        <h1>All Arts</h1>
+    </div>
+        <DIV class=l>
+            {% if msg %} {{msg}} {% endif %}
+        </DIV>
+        <div class="box">
+        {% for art in arts %}
+        <div class="row">
+        <img src="{{art.image.url}}" width="300" height="300" /> {%if art.available %}
+        <p class="m"> ART NAME :&nbsp{{art.artname}}</p>
+        <p class="n">CATEGORY :&nbsp{{art.category}}</p>
+        <p class="p">PRIZE :&nbsp{{art.prize}} ₹ </p>
+        <form action="/Add_Art/delete_art/" class="delete" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="img" value="{{art.artname}}">
+            <INPUT class="dtn" type="submit" value="Delete">
+        </form>
+        {%else%}
+        <p class="m"> This art is sold to </p>
+        <p class="p">{{art.username}} in {{art.prize}} ₹ </p>
+    
+        {% endif %}
+    </div>
+         {% endfor %}
+        </div>
+
+   <div class="back">
+        <form action="/Add_Art/addart/">
+            <INPUT class="mtn" type="submit" value=" BACK">
+        </form>
+    </div>
+</body>
+
+</html>

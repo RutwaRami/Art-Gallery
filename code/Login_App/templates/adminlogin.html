@@ -1,0 +1,118 @@
+<HTML lang="en" dir="ltr"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   <TITLE>Login Page</TITLE>   
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<STYLE>
+	body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: url('/static/img1.jpg') ;
+  background-size: cover;
+}
+ h2{
+		 margin: 10px 0;
+		text-align: center;
+		font-size: 80px;
+		padding-top: 40px;
+		font-family: sans-serif;
+		 color: white;
+           text-shadow: 2px 2px 4px #000000;
+ 
+	}
+.login-box{
+  width: 400px;
+
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-60%,-70%);
+  color: white;
+  background: rgba(0, 0, 0, 0.582);
+  border-radius: 10px;
+}
+.login-box h1{
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 1px;
+  padding: 13px 0;
+  font-family: Georgia;
+  color: rgb(255, 255, 255);
+}
+.textbox{
+  width: 90%;
+  overflow: hidden;
+  font-size: 20px;
+  background: none;
+  padding: 8px 0;
+  margin: 8px 20px;
+  border-bottom: 1px solid rgb(248, 248, 248);
+}
+.textbox i{
+  width: 20px;
+  float: left;
+  text-align: center;
+}
+.textbox input{
+  border: none;
+  outline: none;
+  background:none;
+  font-size: 20px;
+  width: 70%;
+  float: left;
+  margin: 0 30px;
+}
+.btn{
+  width: 90%;
+  background: none;
+  border: 3px solid rgb(255, 255, 255);
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 12px 20px;
+}
+.ctn{
+  width: 90%;
+  background: none;
+  border: 2px solid rgb(255, 255, 255);
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 12px 20px;
+}
+
+.m{
+	text-align: center;
+  font-size: 20px;
+  margin-bottom: 1px;
+  padding: 13px 0;
+  color: rgb(255, 108, 108);
+}
+  </STYLE>
+    
+<META name="GENERATOR" content="MSHTML 11.00.10570.1001"></HEAD> 
+<BODY>
+<form action='/Login_App/admincheck/' method="POST">{% csrf_token %}
+<DIV class="login-box">
+<H1>Log-In (Admin)</H1>
+<DIV class="textbox"><I class="fas fa-user"></I>     
+<INPUT type="text" placeholder="Enter Username" value="" name="username" style="background-color: white;">	   </DIV>
+<DIV class="textbox"><I class="fas fa-lock"></I>     
+<INPUT type="password" placeholder="Enter Password" value="" name="password" style="background-color: white;">   </DIV>
+
+<INPUT class="btn" type="submit" value="Login" name="log">
+</form>
+    <br>
+    <form action="/Login_App/login http://127.0.0.1:8000//">
+      <INPUT class="ctn" type="submit" value="Cancel" align="center">
+      </form>
+      <DIV class=m>
+        {%if msg%}
+          {{msg}}
+        {% endif %}
+        </DIV>
+</DIV>
+
+</BODY></HTML>
